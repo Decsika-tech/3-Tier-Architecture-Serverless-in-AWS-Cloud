@@ -7,3 +7,6 @@ This project demonstrates a 3-tier serverless architecture using AWS.
 - API Gateway
 - AWS Lambda (Python)
 - DynamoDB
+
+## Architecture
+![Uploading image.png…]()
