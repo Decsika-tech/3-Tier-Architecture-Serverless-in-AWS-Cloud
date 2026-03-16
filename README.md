@@ -12,8 +12,3 @@ This project demonstrates a 3-tier serverless architecture using AWS.
 ## Architecture Diagram
 ![3 Tier Serverless Architecture in AWS](architecture.png)
 
-<h2>Architecture Diagram</h2>
-
-<p align="center">
-  <img src="architecture.png" width="800">
-</p>
