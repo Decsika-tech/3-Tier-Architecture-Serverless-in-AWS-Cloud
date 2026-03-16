@@ -9,6 +9,4 @@ This project demonstrates a 3-tier serverless architecture using AWS.
 - AWS Lambda (Python)
 - DynamoDB
 
-##Architecture
-
-
+## Architecture Diagram
