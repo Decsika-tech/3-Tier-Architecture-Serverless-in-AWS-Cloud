@@ -20,25 +20,30 @@ This improves scalability, security, and maintainability.
 ![3 Tier Serverless Architecture in AWS](architecture.png)
 
 ## Technologies Used
-- Cloud Front
-- S3
-- API Gateway
-- AWS Lambda 
-- DynamoDB
+Presentation tier :
+- **AWS Cloud Front** --> Delivers the frontend content globally with low latency using CDN.
+- **AWS S3**          --> Stores and hosts the static frontend files (HTML, JS).
+
+Application tier :
+- **AWS API Gateway** --> Acts as a bridge to handle requests between frontend and backend.
+- **AWS Lambda**  --> Executes backend logic for saving and retrieving student data.
+
+Database tier :
+- **AWS DynamoDB**    --> Stores student data in a scalable NoSQL database.
 
 ## Folder Structure
+```
 3-tier-serverless-student-app
 │
-├── frontend tier
-│   ├── index.html  
-│   └── scripts.js
+├── frontend (Presentation tier)
+│   ├── index.html  # Main webpage structure for entering and viewing student data
+│   └── scripts.js  # Handles API calls to save and fetch student data
 │
 ├── Application tier
-│   ├── insertStudentData
-│   └── getStudentData
-│
-└── README.md
-
+│    ├── insertStudentData # Lambda function to store student data in DynamoDB
+│    └── getStudentData    # Lambda function to retrieve student data from DynamoDB
+```
+ 
 ## How to Run the Project
 Follow these steps to run the project.
 
@@ -69,7 +74,7 @@ git clone https://github.com/Decsika-tech/3-Tier-Architecture-Serverless-in-AWS-
 ### Step 5: Create Lambda Function (Application Layer)
 Open AWS Lambda and create a two Lambda functions using Python.
 
-Lambda 1 – **InsertStudentdata**
+Lambda 1 – **insertStudentdata**
 - Receives data from API Gateway.
 - Stores student information in DynamoDB.
 
