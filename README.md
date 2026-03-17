@@ -54,10 +54,9 @@ git clone https://github.com/Decsika-tech/3-Tier-Architecture-Serverless-in-AWS-
 ```
 ### Step 2: Upload Frontend to S3 (Presentation Layer)
 1. Open AWS Console.
-2. Create an S3 bucket.
+2. Create a private S3 bucket.
 3. Upload the frontend files (index.html, scripts.js).
 4. Enable Static Website Hosting in bucket properties.
-5. Make the files publicly accessible.
 
 ### Step 3: Configure CloudFront
 1. Create a CloudFront distribution.
