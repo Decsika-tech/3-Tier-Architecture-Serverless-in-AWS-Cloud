@@ -143,3 +143,6 @@ const API_URL = "https://your-api-id.execute-api.region.amazonaws.com/prod";
 
 ## Contributing
 Pull requests are welcome! If you find any issues, feel free to open an issue.
+
+## Contact
+For any queries, reach out at helendecsika5@gmail.com.
