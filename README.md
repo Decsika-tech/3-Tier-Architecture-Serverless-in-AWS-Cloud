@@ -71,21 +71,40 @@ git clone https://github.com/Decsika-tech/3-Tier-Architecture-Serverless-in-AWS-
 3. Set the Primary Key as: **Student Id** (String).
 4. Save the table name for Lambda configuration.
 
-### Step 5: Create Lambda Function (Application Layer)
-Open AWS Lambda and create a two Lambda functions using Python.
+### Step 5: Create IAM Role for Lambda
+1. Go to AWS Console → IAM → Roles → Create Role.
+2. Select Lambda as the trusted entity.
+3. Attach the following permissions:
+- **AmazonDynamoDBFullAccess**
+- **CloudWatch Logs permissions**
 
-Lambda 1 – **insertStudentdata**
-- Receives data from API Gateway.
-- Stores student information in DynamoDB.
+Assign this role to both Lambda functions
 
-Lambda 2 – **getStudentsdata**
-- Retrieves stored student records from DynamoDB.
-- Returns the data to the frontend when the View button is clicked. 
+### Step 6: Create Lambda Function (Application Layer)
+Create Lambda Functions
+1. Go to AWS Console → Lambda → Click **Create Function**
+2. Choose **Author from scratch**
 
-### Step 6: Configure API Gateway
+#### Lambda 1 – insertStudentData
+3. Enter function name: `insertStudentData`.
+4. Select runtime (Python).
+5. Attach IAM Role (DynamoDB + CloudWatch access).
+6. Add code to save data in DynamoDB (`PutItem`).
+7. Click **Deploy**.
+
+#### Lambda 2 – getStudentData
+8. Create another function: `getStudentData`.
+9. Attach same IAM Role.
+10. Add code to fetch data from DynamoDB (`Scan/GetItem`).
+11. Click **Deploy**.
+
+* Test both functions using sample events.
+* Check logs in CloudWatch for verification.
+
+### Step 7: Configure API Gateway
 1. Open API Gateway
 2. Create a REST API
-3.Create the following endpoints:
+3. Create the following endpoints:
 - **POST** /insertStudent
 - **GET** /getStudents
 
@@ -95,7 +114,7 @@ Connect:
 
 Enable CORS and deploy the API.
 
-### Step 7: Update API URL in Frontend
+### Step 8: Update API URL in Frontend
 Open the scripts.js file and update the API Gateway endpoint.
 
 Example: 
@@ -103,13 +122,13 @@ Example:
 const API_URL = "https://your-api-id.execute-api.region.amazonaws.com/prod";
 ``
 
-### Step 8: Run the Application
+### Step 9: Run the Application
 1. Open the CloudFront URL in a browser.
 2. Enter student details in the form.
 3. Click Save to store the data.
 4. Click View to display student records from DynamoDB.
 
-### Step 9: Verify Data in DynamoDB
+### Step 10: Verify Data in DynamoDB
 1. Open DynamoDB in AWS Console.
 2. Go to the StudentData table.
 3. Check the stored student records.
